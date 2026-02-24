@@ -1,27 +1,70 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Mi web organizada</title>
+    <title>Mi web con menú</title>
 
-    <!-- Conexión de estilos -->
+    <!-- CSS -->
     <link rel="stylesheet" href="estilos/body.css">
     <link rel="stylesheet" href="estilos/header.css">
     <link rel="stylesheet" href="estilos/footer.css">
     <link rel="stylesheet" href="estilos/card.css">
 
+    <style>
+        nav {
+            background: #2c3e50;
+            padding: 10px;
+        }
+
+        nav button {
+            background: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        nav button:hover {
+            background: #ddd;
+        }
+    </style>
 </head>
+
 <body>
 
-    <h1>Hola versión profesional</h1>
+    <h1>Demo HTML + CSS + JS</h1>
 
+    <!-- MENÚ -->
+    <nav>
+        <button onclick="mostrarSeccion('home')">Inicio</button>
+        <button onclick="mostrarSeccion('info')">Info</button>
+        <button onclick="mostrarSeccion('contacto')">Contacto</button>
+    </nav>
+
+    <!-- CONTENIDO -->
     <div class="card">
-        <p>HTML + CSS modular + Git</p>
-        <img src="img/foto.png" width="300">
+
+        <div id="home">
+            <p>Bienvenido a la página principal</p>
+            <img src="imagen.jpg" width="250">
+        </div>
+
+        <div id="info" style="display:none">
+            <p>Esta página demuestra HTML + CSS + JavaScript</p>
+        </div>
+
+        <div id="contacto" style="display:none">
+            <p>Email: demo@test.com</p>
+        </div>
+
     </div>
 
     <footer>
-        Proyecto versionado con Git - Demo educativa
+        Proyecto demo con menú interactivo
     </footer>
+
+    <!-- SCRIPT -->
+    <script src="scripts/menu.js"></script>
 
 </body>
 </html>
