@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Presupuestos</title>
+
+  <!-- CSS separado -->
+  <link rel="stylesheet" href="estilos/header.css">
+  <link rel="stylesheet" href="estilos/body.css">
+  <link rel="stylesheet" href="estilos/footer.css">
+  <link rel="stylesheet" href="estilos/components.css">
+</head>
+<body>
+
+<header>
+  <h1>Gestión de Presupuestos</h1>
+</header>
+
+<main>
+
+  <div class="card">
+    <h3>Crear presupuesto</h3>
+    <input id="concepto" placeholder="Concepto">
+    <input id="monto" type="number" placeholder="Monto">
+    <button onclick="crear()">Crear</button>
+  </div>
+
+  <div class="card">
+    <h3>Listar</h3>
+    <button onclick="abrirListado()">Ver todos</button>
+  </div>
+
+  <div class="card">
+    <h3>Actualizar / Eliminar</h3>
+    <input id="updateId" type="number" placeholder="ID presupuesto">
+    <button onclick="aprobar()">Aprobar</button>
+    <button class="danger" onclick="eliminar()">Eliminar</button>
+  </div>
+
+</main>
+
+<footer class="footer">
+    <div class="footer-content">
+        <img src="../img/logo.png" alt="QAlaub Logo" class="footer-logo">
+
+        <p>
+            Proyecto demo educativo. 2019 - 2026· 
+            <a href="https://qalaub.com" target="_blank">https://qalaub.com</a>
+        </p>
+    </div>
+    </footer>
+
+<pre id="output"></pre>
+
+<script src="script/presupuesto.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  text-align: center;
+  margin: 40px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  margin: 15px auto;
+  width: 350px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+}
+
+input {
+  padding: 8px;
+  margin: 5px;
+  width: 80%;
+}
+
+button {
+  padding: 10px 15px;
+  margin: 5px;
+  border: none;
+  background: #2c3e50;
+  color: white;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+button:hover {
+  background: #1a252f;
+}
+
+button.danger {
+  background: #c0392b;
+}
+
+pre {
+  text-align: left;
+  background: #111;
+  color: #0f0;
+  padding: 15px;
+  margin: 20px auto;
+  width: 80%;
+  border-radius: 8px;
+}

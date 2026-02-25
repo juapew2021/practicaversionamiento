@@ -2,3 +2,7 @@
 HTML = estructura
 CSS = estilo
 JS = comportamiento (interacción)
+
+#En este proyecto utilicé Supabase como Backend as a Service. El frontend consume 
+directamente la API REST que Supabase genera automáticamente sobre PostgreSQL. 
+Supabase gestiona la infraestructura backend, mientras que yo gestiono la lógica en el frontend.
