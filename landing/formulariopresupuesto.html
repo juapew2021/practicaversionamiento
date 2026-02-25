@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Formulario Presupuesto</title>
+  <link rel="stylesheet" href="estilos/header.css">
+  <link rel="stylesheet" href="estilos/body.css">
+  <link rel="stylesheet" href="estilos/footer.css">
+  <link rel="stylesheet" href="estilos/components.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Formulario de Presupuesto</h1>
+</header>
+
+<main>
+  <form id="formPresupuesto">
+
+    <!-- STRING OBLIGATORIO -->
+    <label>Concepto *</label>
+    <input type="text" name="concepto" required>
+
+    <!-- NUMBER OBLIGATORIO -->
+    <label>Monto *</label>
+    <input type="number" name="monto" min="0" step="0.01" required>
+
+    <!-- STRING OPCIONAL -->
+    <label>Descripción (opcional)</label>
+    <textarea name="descripcion"></textarea>
+
+    <!-- ENUM (select) -->
+    <label>Moneda *</label>
+    <select name="moneda" required>
+      <option value="">Seleccionar</option>
+      <option value="EUR">EUR</option>
+      <option value="USD">USD</option>
+      <option value="COP">COP</option>
+    </select>
+
+    <!-- ENUM ESTADO -->
+    <label>Estado</label>
+    <select name="estado">
+      <option value="BORRADOR">BORRADOR</option>
+      <option value="APROBADO">APROBADO</option>
+      <option value="RECHAZADO">RECHAZADO</option>
+    </select>
+
+    <!-- BOOLEAN -->
+    <label>
+      <input type="checkbox" name="urgente">
+      ¿Es urgente?
+    </label>
+
+    <!-- DATE -->
+    <label>Fecha estimada</label>
+    <input type="date" name="fecha_estimada">
+
+    <!-- EMAIL -->
+    <label>Email cliente *</label>
+    <input type="email" name="email" required>
+
+    <!-- TEL -->
+    <label>Teléfono</label>
+    <input type="tel" name="telefono">
+
+    <!-- HIDDEN -->
+    <input type="hidden" name="creado_por" value="admin">
+
+    <button type="submit">Guardar</button>
+
+  </form>
+
+  <pre id="resultado"></pre>
+
+</main>
+
+<footer>
+  <p>Proyecto demo - QAlaub</p>
+</footer>
+
+<script src="scripts/formulario.js"></script>
+</body>
+</html>

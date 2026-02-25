@@ -34,7 +34,12 @@
     <h3>Actualizar / Eliminar</h3>
     <input id="updateId" type="number" placeholder="ID presupuesto">
     <button onclick="aprobar()">Aprobar</button>
-    <button class="danger" onclick="eliminar()">Eliminar</button>
+    <button class="danger" onclick="pedirConfirmEliminar()">Eliminar</button>
+  </div>
+
+  <div class="card">
+    <h3>Formulario de Presupuesto</h3>
+    <a href="formulariopresupuesto.html" target="_blank">Formulario Presupuesto</a>
   </div>
 
 </main>
@@ -53,5 +58,26 @@
 <pre id="output"></pre>
 
 <script src="script/presupuesto.js"></script>
+<!-- MODAL POPUP -->
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <p id="popup-msg">Presupuesto creado</p>
+    <button onclick="cerrarPopup()">OK</button>
+  </div>
+</div>
+<!-- LOADER -->
+<div id="loader" class="loader">
+  <div class="spinner"></div>
+  <p>Guardando...</p>
+</div>
+
+<!-- CONFIRM DELETE -->
+<div id="confirmDelete" class="popup">
+  <div class="popup-content">
+    <p>¿Seguro que deseas eliminar este presupuesto?</p>
+    <button onclick="confirmarEliminar()">Sí, eliminar</button>
+    <button onclick="cerrarConfirm()">Cancelar</button>
+  </div>
+</div>
 </body>
 </html>
