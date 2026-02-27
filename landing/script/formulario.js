@@ -2,45 +2,37 @@ const SUPABASE_URL = "https://walkqbqzvqgccrlwavgp.supabase.co";
 const API_KEY = "sb_publishable_O9PvpNkhB9PrwJO36kpQNQ_YhKLrr16";
 
 document.getElementById("formPresupuesto")
-.addEventListener("submit", async function(e){
+.addEventListener("submit", function(e){
 
-e.preventDefault();
+e.preventDefault()
 
-const form = e.target;
+let valido = true
 
-if(!validarFormulario(form)){
-return;
+valido &= validarConcepto()
+valido &= validarMonto()
+valido &= validarEmail()
+valido &= validarMoneda()
+
+if(!valido){
+return
 }
 
 const datos = {
 
-concepto: form.concepto.value,
+concepto: document.getElementById("concepto").value,
+monto: parseFloat(document.getElementById("monto").value),
+email: document.getElementById("email").value,
+moneda: document.getElementById("moneda").value,
+estado: document.getElementById("estado").value,
+fecha: document.getElementById("fecha").value,
+urgente: document.getElementById("urgente").checked,
+descripcion: document.getElementById("descripcion").value
 
-monto: parseFloat(form.monto.value),
+}
 
-descripcion: form.descripcion.value || null,
+enviarAPI(datos)
 
-moneda: form.moneda.value,
-
-estado: form.estado.value,
-
-urgente: form.urgente.checked,
-
-fecha_estimada: form.fecha_estimada.value || null,
-
-email: form.email.value,
-
-telefono: form.telefono.value || null,
-
-creado_por: form.creado_por.value
-
-};
-
-await enviarSupabase(datos);
-
-});
-
-
+})
 
 async function enviarSupabase(datos){
 
@@ -378,4 +370,36 @@ campo.classList.add("validInput")
 error.textContent = ""
 
 return true
+}
+async function enviarAPI(datos){
+
+try{
+
+const res = await fetch(`${SUPABASE_URL}/rest/v1/presupuesto`,{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json",
+"apikey":API_KEY,
+"Authorization":`Bearer ${API_KEY}`,
+"Prefer":"return=representation"
+},
+
+body:JSON.stringify(datos)
+
+})
+
+const data = await res.json()
+
+console.log("Guardado:",data)
+
+mostrarPopup("Presupuesto guardado")
+
+}catch(err){
+
+console.error("Error API",err)
+
+}
+
 }
