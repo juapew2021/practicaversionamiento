@@ -6,3 +6,107 @@ JS = comportamiento (interacción)
 #En este proyecto utilicé Supabase como Backend as a Service. El frontend consume 
 directamente la API REST que Supabase genera automáticamente sobre PostgreSQL. 
 Supabase gestiona la infraestructura backend, mientras que yo gestiono la lógica en el frontend.
+
+Las validaciones deben existir en 3 capas
+Frontend
+API / Backend
+Base de datos
+
+| Capa     | Qué valida        | Tipo de error |
+| -------- | ----------------- | ------------- |
+| Frontend | UX y formato      | Bug Front     |
+| API      | lógica de negocio | Bug Backend   |
+| DB       | integridad        | Bug Backend   |
+
+| Capa     | Qué valida        | Tipo de error |
+| -------- | ----------------- | ------------- |
+| Frontend | UX y formato      | Bug Front     |
+| API      | lógica de negocio | Bug Backend   |
+| DB       | integridad        | Bug Backend   |
+
+######################
+# En este proyecto utilicé Supabase como Backend as a Service. El frontend consume
+directamente la API REST que Supabase genera automáticamente sobre PostgreSQL.
+Supabase gestiona la infraestructura backend, mientras que yo gestiono la lógica en el frontend.
+Las validaciones deben existir en 3 capas
+1. Frontend
+2. API / Backend
+3. Base de datos
+| Capa     | Qué valida        | Tipo de error |
+| -------- | ----------------- | ------------- |
+| Frontend | UX y formato      | Bug Front     |
+| API      | lógica de negocio | Bug Backend   |
+| DB       | integridad        | Bug Backend   |
+
+| Código | Significado           | Qué pasó                         | Dónde suele estar el problema |
+| ------ | --------------------- | -------------------------------- | ----------------------------- |
+| 200    | OK                    | Todo salió bien                  | Ninguno                       |
+| 201    | Created               | Registro creado                  | Ninguno                       |
+| 204    | No Content            | Operación exitosa pero sin datos | Ninguno                       |
+| 400    | Bad Request           | Datos mal enviados               | Frontend                      |
+| 401    | Unauthorized          | No autenticado                   | Seguridad                     |
+| 403    | Forbidden             | No tiene permisos                | Backend                       |
+| 404    | Not Found             | Recurso no existe                | Backend / API                 |
+| 409    | Conflict              | Registro duplicado               | Backend                       |
+| 422    | Validation error      | Datos inválidos                  | Backend                       |
+| 500    | Internal Server Error | Error del servidor               | Backend                       |
+| 502    | Bad Gateway           | Problema entre servicios         | Infraestructura               |
+| 504    | Gateway Timeout       | Backend no respondió             | Infraestructura               |
+
+
+| Código | Acción UI                          |
+| ------ | ---------------------------------- |
+| 200    | Mostrar éxito                      |
+| 201    | Mostrar "creado correctamente"     |
+| 204    | Mostrar "operación completada"     |
+| 400    | Mostrar errores del formulario     |
+| 401    | Redirigir a login                  |
+| 403    | Mostrar "no tienes permisos"       |
+| 404    | Mostrar "recurso no encontrado"    |
+| 409    | Mostrar "registro duplicado"       |
+| 422    | Mostrar validaciones backend       |
+| 500    | Mostrar error servidor             |
+| 504    | Mostrar "servidor tardó demasiado" |
+
+
+| Situación                            | Bug             |
+| ------------------------------------ | --------------- |
+| Formulario permite datos inválidos   | Front           |
+| API devuelve 400 correctamente       | Correcto        |
+| API devuelve 200 con datos inválidos | Backend         |
+| API devuelve 500                     | Backend         |
+| API no responde (504)                | Infraestructura |
+| Situación                            | Bug             |
+| ------------------------------------ | --------------- |
+
+
+| Validación           | Dónde           |
+| -------------------- | --------------- |
+| concepto obligatorio | Front           |
+| monto > 0            | Front           |
+| email válido         | Front           |
+| moneda seleccionada  | Front           |
+| error 400            | API             |
+| error 500            | API             |
+| timeout 504          | Infraestructura |
+
+| Escenario                     | Qué pasa                  | Capa    |
+| ----------------------------- | ------------------------- | ------- |
+| Front bloquea                 | validación JS             | Front   |
+| Front deja pasar → DB bloquea | constraint SQL            | DB      |
+| Front deja pasar → API error  | endpoint incorrecto       | API     |
+| Timeout                       | servidor tarda            | Infra   |
+| Bug funcional backend         | DB guarda algo incorrecto | Backend |
+
+| Campo       | Tipo    |
+| ----------- | ------- |
+| Concepto    | string  |
+| Monto       | number  |
+| Email       | string  |
+| Moneda      | enum    |
+| Estado      | enum    |
+| Fecha       | date    |
+| Urgente     | boolean |
+| Descripción | text    |
+
+
