@@ -109,4 +109,12 @@ Las validaciones deben existir en 3 capas
 | Urgente     | boolean |
 | Descripción | text    |
 
+# Dynatrace, Grafana, o Elastic Stack.
 
+Logs de Frontend
+
+Logs de API
+
+Logs de Base de datos
+
+Niveles de log: INFO / WARNING / ERROR

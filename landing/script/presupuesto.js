@@ -462,7 +462,7 @@ return;
 
 }
 
-qaLog("⚠️ DB aceptó el dato (BUG)");
+qaLog("DB aceptó el dato (BUG)");
 
 }catch(e){
 
@@ -678,3 +678,38 @@ document.getElementById("concepto")
 
 document.getElementById("email")
 .addEventListener("input", validarEmail)
+function logInfo(msg){
+
+const panel = document.getElementById("logPanel")
+
+panel.innerHTML += `<div class="logInfo">[INFO] ${msg}</div>`
+
+panel.scrollTop = panel.scrollHeight
+
+}
+
+function logWarning(msg){
+
+const panel = document.getElementById("logPanel")
+
+panel.innerHTML += `<div class="logWarning">[WARNING] ${msg}</div>`
+
+panel.scrollTop = panel.scrollHeight
+
+}
+
+function logError(msg){
+
+const panel = document.getElementById("logPanel")
+
+panel.innerHTML += `<div class="logError">[ERROR] ${msg}</div>`
+
+panel.scrollTop = panel.scrollHeight
+
+}
+logInfo("Usuario envió formulario")
+logInfo("Validación frontend completada")
+logInfo("Enviando request a API /presupuesto")
+logInfo("API respondió status 201")
+logInfo("Registro insertado en base de datos")
+logError("DB constraint monto_positivo")
